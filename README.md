@@ -163,3 +163,104 @@ This project is maintained by [Modus Create](https://moduscreate.com). Fantastic
 [MIT](License.md)
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FModusCreateOrg%2Fbudgeting-sample-app-webpack2.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FModusCreateOrg%2Fbudgeting-sample-app-webpack2?ref=badge_large)
+
+________________________________________________________________________________________________________________________
+
+## Test Plan
+
+# Delete Income Category
+  - Select an item listed
+  - Select the "DELETE" button    
+    - "DELETE" Button should disappeared 
+    - Verify the amount was deleted from "Total Inflow"
+  - Go to "Reports/Inflow vs Outflow"
+    - Category recently deleted is not displayed
+    - Verify the amount was deleted from "Total Inflow"
+
+
+# Delete Outcome Category
+  - Select an item listed
+  - Select the "DELETE" button    
+    - "DELETE" Button should disappeared 
+    - Verify the amount was deleted from "Total Outflow"
+  - Go to "Reports/Inflow vs Outflow"
+    - Category recently deleted is not displayed
+    - Verify the amount was deleted from "Total Outflow"
+  - Go to "Reports/Spending by Category"
+    - Category recently deleted is not displayed
+    - Verify the amount was deleted.  
+    
+# Add Income Categoty
+  - Go to the last row of the table of "Category"
+  - Select the dropdown list with arrows
+  - Select a Income "Category".
+  - Add a description
+  - Add a value(it should be a number)
+  - Select the button "ADD" 
+    - The new "Category" is now displayed int he table with the corresponding value entered in green color.
+    - Verify the amount was added to "Total Inflow"
+    - Go to "Reports/Inflow vs Outflow"
+       - Category recently added is now displayed with the corresponding value entered.
+       - Verify in the "INFLOW" bar the amount of the category was added properly
+
+# Add Income Categoty negative
+  - Go to the last row of the table of "Category"
+  - Select the dropdown list with arrows
+  - Select a Income "Category".
+  - Add a description
+  - Add any character different than a number
+    - Character could not be event displayed in the input field.
+
+# Add Outcome Categoty
+  - Go to the last row of the table of "Category"
+  - Select the dropdown list with arrows
+  - Select any "Category" except "Income"
+  - Add a description
+  - Add a value(it should be a number)
+  - Select the button "ADD" 
+    - The new "Category" is now displayed int he table with the corresponding value entered in red color.
+    - Verify the amount was added to "Total Outflow"
+    - Go to "Reports/Inflow vs Outflow"
+       - Category recently added is now displayed with the corresponding value entered.
+       - Verify in the "OUTFLOW" bar the amount of the category was added properly
+  - Do the same with all the "Outflow"
+
+  # Add Outcome Categoty negative
+  - Go to the last row of the table of "Category"
+  - Select the dropdown list with arrows
+  - Select any "Category" except "Income"
+  - Add a description
+    - Character could not be event displayed in the input field.
+  
+
+# Edit Description
+
+  - Select the description field of any item listed.
+  - Add and exta character to the description field and press Enter
+    - The description should displayed as it was modified.
+
+# Edit Inflow Amount
+
+  - Select the amount field of any "Inflow" item listed.
+  - Modify the amount and press "UPDATE"
+    - Verify the  is displayed as it was modified.
+   - Verify the amount was added to "Total Inflow"
+    - Go to "Reports/Inflow vs Outflow"
+       - Verify in the "INFLOW" bar, the amount was properly displayed
+
+
+ # Edit Inflow Amount Negative
+
+  - Select the amount field of any "Inflow" item listed.
+  - Modify the amount and press Enter
+    - Verify the message "Please enter a valid value"   
+
+# Edit Outflow Amount
+
+  - Select the amount field of any "Outflow" item listed
+  - Modify the amount and press Enter
+    - Verify the amount is displayed as it was modified.
+   - Verify the amount was added to "Total Outflow"
+    - Go to "Reports/Inflow vs Outflow"
+       - Verify in the "OUTFLOW" bar, the amount was properly displayed
+    - Go to "Spending by Category" verify the mnodified amount was properly displayed
