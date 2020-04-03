@@ -164,11 +164,18 @@ This project is maintained by [Modus Create](https://moduscreate.com). Fantastic
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FModusCreateOrg%2Fbudgeting-sample-app-webpack2.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FModusCreateOrg%2Fbudgeting-sample-app-webpack2?ref=badge_large)
 
-________________________________________________________________________________________________________________________
+## Cypress ##
 
-## Test Plan
+### Steps to run the automation script
 
-# Delete Income Category
+  - Run Cypress: Go to the main folder where the project was cloned and run the command from the root of the folder: `npx cypress open` 
+  -  Select one by one of the scripts displayed in the main Cypress window, scripts should run on Electron browser by default, to run those on chrome
+     select "Chrome 80" from the dropdown list.
+  - Use node version 10
+
+### Test Plan
+
+#### Delete Income Category
   - Select an item listed
   - Select the "DELETE" button    
     - "DELETE" Button should disappeared 
@@ -177,8 +184,7 @@ ________________________________________________________________________________
     - Category recently deleted is not displayed
     - Verify the amount was deleted from "Total Inflow"
 
-
-# Delete Outcome Category
+#### Delete Outcome Category
   - Select an item listed
   - Select the "DELETE" button    
     - "DELETE" Button should disappeared 
@@ -190,7 +196,7 @@ ________________________________________________________________________________
     - Category recently deleted is not displayed
     - Verify the amount was deleted.  
     
-# Add Income Categoty
+#### Add Income Categoty
   - Go to the last row of the table of "Category"
   - Select the dropdown list with arrows
   - Select a Income "Category".
@@ -203,43 +209,42 @@ ________________________________________________________________________________
        - Category recently added is now displayed with the corresponding value entered.
        - Verify in the "INFLOW" bar the amount of the category was added properly
 
-# Add Income Categoty negative
+#### Add Income Categoty negative
   - Go to the last row of the table of "Category"
   - Select the dropdown list with arrows
   - Select a Income "Category".
   - Add a description
   - Add any character different than a number
-    - Character could not be event displayed in the input field.
+    - Character could not be even displayed in the input field.
 
-# Add Outcome Categoty
+#### Add Outcome Categoty
   - Go to the last row of the table of "Category"
   - Select the dropdown list with arrows
   - Select any "Category" except "Income"
   - Add a description
   - Add a value(it should be a number)
   - Select the button "ADD" 
-    - The new "Category" is now displayed int he table with the corresponding value entered in red color.
+    - The new "Category" is now displayed in the table with the corresponding value entered in red color with a minus.
     - Verify the amount was added to "Total Outflow"
     - Go to "Reports/Inflow vs Outflow"
        - Category recently added is now displayed with the corresponding value entered.
        - Verify in the "OUTFLOW" bar the amount of the category was added properly
   - Do the same with all the "Outflow"
 
-  # Add Outcome Categoty negative
-  - Go to the last row of the table of "Category"
-  - Select the dropdown list with arrows
-  - Select any "Category" except "Income"
-  - Add a description
-    - Character could not be event displayed in the input field.
+#### Add Outcome Categoty negative
+- Go to the last row of the table of "Category"
+- Select the dropdown list with arrows
+- Select any "Category" except "Income"
+- Add a description
+  - Character could not be event displayed in the input field.
   
-
-# Edit Description
+#### Edit Description
 
   - Select the description field of any item listed.
   - Add and exta character to the description field and press Enter
     - The description should displayed as it was modified.
 
-# Edit Inflow Amount
+#### Edit Income Amount
 
   - Select the amount field of any "Inflow" item listed.
   - Modify the amount and press "UPDATE"
@@ -248,19 +253,43 @@ ________________________________________________________________________________
     - Go to "Reports/Inflow vs Outflow"
        - Verify in the "INFLOW" bar, the amount was properly displayed
 
+#### Edit Income Amount Negative
 
- # Edit Inflow Amount Negative
+- Select the amount field of any "Inflow" item listed.
+- Modify the amount and press Enter
+  - Verify the message "Please enter a valid value" has been displayed  
 
-  - Select the amount field of any "Inflow" item listed.
-  - Modify the amount and press Enter
-    - Verify the message "Please enter a valid value"   
+#### Edit Income Amount and sign
 
-# Edit Outflow Amount
+  - Select the amount field of any "Outflow" item listed
+  - Modify the amount and add a minus sign.
+  - Select Update
+    - Verify the amount is displayed as it was modified with a minus sign on it.
+    - Verify the amount was added to "Total Inflow"
+    - Verify the amount was remove from "Total Outflow"
+    - Go to "Reports/Inflow vs Outflow"
+      - Verify in the "OUTFLOW" bar, the amount should be properly properly deleted
+      - Verify in the "INTFLOW" bar, the amount should be properly properly added
+    - Go to "Spending by Category" verify the modified amount was properly displayed   
+
+#### Edit Outflow Amount
 
   - Select the amount field of any "Outflow" item listed
   - Modify the amount and press Enter
     - Verify the amount is displayed as it was modified.
-   - Verify the amount was added to "Total Outflow"
+  - Verify the amount was added to "Total Outflow"
     - Go to "Reports/Inflow vs Outflow"
-       - Verify in the "OUTFLOW" bar, the amount was properly displayed
-    - Go to "Spending by Category" verify the mnodified amount was properly displayed
+      - Verify in the "OUTFLOW" bar, the amount was properly displayed
+    - Go to "Spending by Category" verify the modified amount was properly displayed
+
+  #### Edit Outflow Amount changing sign
+
+  - Select the amount field of any "Outflow" item listed
+  - Modify the amount, remove the minus sign and press Enter
+    - Verify the amount is displayed as it was modified.
+    - Verify the amount is displayed now in green color with out the minus sign
+    - Verify the amount was removed from "Total Outflow"
+    - Verify the amount was added to "Total Inflow"
+    - Go to "Reports/Inflow vs Outflow"
+      - Verify the "OUTFLOW" bar, the amount should be properly removed
+      - Verify the "INFLOW" bar, the amount should be properly added 
